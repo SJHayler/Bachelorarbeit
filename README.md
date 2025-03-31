@@ -1,2 +1,2 @@
-# Bachelorarbeit
-Verwendete Codes in der Methodik (Datenaufbereitung)
+# Bachelorarbeit - Ergänzender Anhang zur Datenaufbereitung
+
