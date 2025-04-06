@@ -1,0 +1,23 @@
+## Konvertierung von .xyz-Dateien zu .tif-Dateien (gdal_translate)	
+DATA_DIR="./<source file 1>"
+OUT_DIR="./<source file 2>"
+for f in $DATA_DIR/*.xyz; do
+base_name=$(basename "$f" .xyz)
+gdal_translate -a_srs EPSG:25832 "$f" "$OUT_DIR/$base_name.tif" -co NUM_THREADS=ALL_CPUS
+done
+
+## Invertierung der Nord-Süd Ausrichtung der Daten
+# Schleife über alle TIF-Dateien im Verzeichnis ./<source files>/
+for f in ./<source_files>/*.tif; do
+# Ausgeben des aktuellen Dateinamens
+echo "$f"
+# Ausführen von gdalwarp mit den gewünschten Parametern
+# $(basename "$f") ermittelt den reinen Dateinamen ohne Pfad
+gdalwarp -t_srs EPSG:25832 -of GTiff -co NUM_THREADS=ALL_CPUS "$f" "./<source_files>/fixed/$(basename "$f")"
+done
+
+## Zusammenfügen der einzelnen .tif-Dateien 
+# Erstellung eines Virtual Datasets (VRT), dass ein Mosaik der Einzeldateien ist
+gdalbuildvrt mosaic.vrt *.tif
+# Konvertierung des Mosaiks in ein Tif unter Angabe der Auflösung
+gdal_translate mosaic.vrt out.tif -co NUM_THREADS=ALL_CPUS -tr 10 10

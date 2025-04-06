@@ -1,0 +1,72 @@
+## Einteilung der Landnutzungsklassen unter Vergabe spezifischer Zahlencodes
+
+CASE
+WHEN "nutzart" is 'Bahnverkehr' THEN 180
+WHEN "nutzart" is 'Flaeche Besonderer Funktionaler Praegung' AND "Versieg_%" is '0' THEN 190
+WHEN "nutzart" is 'Flaeche Besonderer Funktionaler Praegung' AND "Versieg_%" is '<25%' THEN 801
+WHEN "nutzart" is 'Flaeche Besonderer Funktionaler Praegung' AND "Versieg_%" is '>25%' THEN 802
+WHEN "nutzart" is 'Flaeche Besonderer Funktionaler Praegung' AND "Versieg_%" is '>50%' THEN 803
+WHEN "nutzart" is 'Flaeche Besonderer Funktionaler Praegung' AND "Versieg_%" is '>75%' THEN 804
+WHEN "nutzart" is 'Flaeche Besonderer Funktionaler Praegung' AND "Versieg_%" is '>85%' THEN 805
+WHEN "nutzart" is 'Flaeche Gemischter Nutzung' AND "Versieg_%" is '0' THEN 190
+WHEN "nutzart" is 'Flaeche Gemischter Nutzung' AND "Versieg_%" is '<25%' THEN 801
+WHEN "nutzart" is 'Flaeche Gemischter Nutzung' AND "Versieg_%" is '>25%' THEN 802
+WHEN "nutzart" is 'Flaeche Gemischter Nutzung' AND "Versieg_%" is '>50%' THEN 803
+WHEN "nutzart" is 'Flaeche Gemischter Nutzung' AND "Versieg_%" is '>75%' THEN 804
+WHEN "nutzart" is 'Flaeche Gemischter Nutzung' AND "Versieg_%" is '>85%' THEN 805
+WHEN "nutzart" is 'Fliessgewaesser' AND "bez" is 'Bach' THEN 41
+WHEN "nutzart" is 'Fliessgewaesser' AND "bez" is 'Fluss' THEN 42
+WHEN "nutzart" is 'Fliessgewaesser' AND "bez" is 'Graben' THEN 43
+WHEN "nutzart" is 'Fliessgewaesser' AND "bez" is 'Kanal' THEN 44
+WHEN "nutzart" is 'Friedhof' THEN 50
+WHEN "nutzart" is 'Gehoelz' THEN 60
+WHEN "nutzart" is 'Halde' THEN 70
+WHEN "nutzart" is 'Industrie Und Gewerbeflaeche' AND "Versieg_%" is '0' THEN 190
+WHEN "nutzart" is 'Industrie Und Gewerbeflaeche' AND "Versieg_%" is '<25%' THEN 801
+WHEN "nutzart" is 'Industrie Und Gewerbeflaeche' AND "Versieg_%" is '>25%' THEN 802
+WHEN "nutzart" is 'Industrie Und Gewerbeflaeche' AND "Versieg_%" is '>50%' THEN 803
+WHEN "nutzart" is 'Industrie Und Gewerbeflaeche' AND "Versieg_%" is '>75%' THEN 804
+WHEN "nutzart" is 'Industrie Und Gewerbeflaeche' AND "Versieg_%" is '>85%' THEN 805
+WHEN "nutzart" is 'Landwirtschaft' AND "bez" is 'Ackerland' THEN 91
+WHEN "nutzart" is 'Landwirtschaft' AND "bez" is 'Brachland' THEN 92
+WHEN "nutzart" is 'Landwirtschaft' AND "bez" is 'Gartenbauland' THEN 93
+WHEN "nutzart" is 'Landwirtschaft' AND "bez" is 'Grünland' THEN 94
+WHEN "nutzart" is 'Landwirtschaft' AND "bez" is 'Rebfläche' THEN 95
+WHEN "nutzart" is 'Platz' AND "bez" is NULL AND "Versieg_%" is '<50%' THEN 190
+WHEN "nutzart" is 'Platz' AND "bez" is NULL AND "Versieg_%" is '>50%' THEN 703
+WHEN "nutzart" is 'Platz' AND "bez" is NULL AND "Versieg_%" is '>75%' THEN 704
+WHEN "nutzart" is 'Platz' AND "bez" is NULL AND "Versieg_%" is '>85%' THEN 705
+WHEN "nutzart" is 'Platz' AND "bez" is 'Parkplatz' AND "Versieg_%" is '<50%' THEN 190
+WHEN "nutzart" is 'Platz' AND "bez" is 'Parkplatz' AND "Versieg_%" is '>50%' THEN 190
+WHEN "nutzart" is 'Platz' AND "bez" is 'Parkplatz' AND "Versieg_%" is '>75%' THEN 190
+WHEN "nutzart" is 'Platz' AND "bez" is 'Parkplatz' AND "Versieg_%" is '>85%' THEN 190
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Garten' THEN 110
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Campingplatz' THEN 111
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Freizeitanlage' THEN 112
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Gebäude- und Freifläche Sport, Freizeit und Erholung' AND "Versieg_%" is '0' THEN 190
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Gebäude- und Freifläche Sport, Freizeit und Erholung' AND "Versieg_%" is '<25%' THEN 801
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Gebäude- und Freifläche Sport, Freizeit und Erholung' AND "Versieg_%" is '>25%' THEN 802
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Gebäude- und Freifläche Sport, Freizeit und Erholung' AND "Versieg_%" is '>50%' THEN 803
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Gebäude- und Freifläche Sport, Freizeit und Erholung' AND "Versieg_%" is '>75%' THEN 804
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Gebäude- und Freifläche Sport, Freizeit und Erholung' AND "Versieg_%" is '>85%' THEN 805
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Grünanlage' THEN 114
+WHEN "nutzart" is 'Sport Freizeit Und Erholungsflaeche' AND "bez" is 'Sportanlage' THEN 115
+WHEN "nutzart" is 'Stehendes Gewaesser' AND "bez" is 'See' THEN 121
+WHEN "nutzart" is 'Stehendes Gewaesser' AND "bez" is 'Teich' THEN 122
+WHEN "nutzart" is 'Strassenverkehr' THEN 130
+WHEN "nutzart" is 'Sumpf' THEN 140
+WHEN "nutzart" is 'Tagebau Grube Steinbruch' THEN 150
+WHEN "nutzart" is 'Unland Vegetationslose Flaeche' THEN 160
+WHEN "nutzart" is 'Wald' AND "bez" is 'Laubholz' THEN 171
+WHEN "nutzart" is 'Wald' AND "bez" is 'Nadelholz' THEN 172
+WHEN "nutzart" is 'Wald' AND "bez" is 'Laub- und Nadelholz' THEN 173
+WHEN "nutzart" is 'Bahnplatz' THEN 130
+WHEN "nutzart" is 'Wohnbauflaeche' AND "Versieg_%" is '0' THEN 190
+WHEN "nutzart" is 'Wohnbauflaeche' AND "Versieg_%" is '<25%' THEN 801
+WHEN "nutzart" is 'Wohnbauflaeche' AND "Versieg_%" is '>25%' THEN 802
+WHEN "nutzart" is 'Wohnbauflaeche' AND "Versieg_%" is '>50%' THEN 803
+WHEN "nutzart" is 'Wohnbauflaeche' AND "Versieg_%" is '>75%' THEN 804
+WHEN "nutzart" is 'Wohnbauflaeche' AND "Versieg_%" is '>85%' THEN 805
+WHEN "nutzart" is 'Flugverkehr' THEN 200
+ELSE -9999
+END

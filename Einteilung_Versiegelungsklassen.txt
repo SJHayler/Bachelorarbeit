@@ -1,0 +1,31 @@
+### Vorgehen in QGIS
+
+## Versieglungsklassen >85%, >75%, >50%, >25%, <25% berechnen (1 Gitterzelle ist 2500m2 groß).
+# 1. Flächenanteil (m2) (Gebäude bzw. anderer Versiegelung) pro Gitterzelle berechnen (Tool: Join Attributes by Location).
+# 2. Definition einer neuen Klasse V_Anteil anhand der Versiegelung (siehe hier beispielhaft SQL-Code für die Gebäudeversiegelung).
+	CASE
+		WHEN "area_geb_s" >= 0 AND  "area_geb_s" <= 625 THEN '<25%' 
+		WHEN "area_geb_s" > 625 AND "area_geb_s" <= 1250 THEN '>25%'
+		WHEN "area_geb_s" > 1250 AND "area_geb_s" <= 1875 THEN '>50%'
+		WHEN "area_geb_s" > 1875 AND "area_geb_s" <= 2125 THEN '>75%'
+		WHEN "area_geb_s" > 2125 THEN '>85%'  
+		ELSE -9999
+	END
+
+
+## Zuordnung zur Klassifizierten Landnutzung (Zuweisung eine Zahlencodes): Versiegelungsanteil (V_Anteil) durch Gebauede (G) oder andere Flaechen (F), andernfalls Zuordnung derjenigen Landnutzungsklasse (ALKIS®), welche als Mehrheit einer Gitterzelle definiert wurde.
+
+	CASE
+		WHEN "V_Anteil" = 0 THEN "ALKISNR_ma" 
+		WHEN "V_Anteil" is 'F<25%' THEN "ALKISNR_ma"
+		WHEN "V_Anteil" is 'F>25%' THEN "ALKISNR_ma"
+		WHEN "V_Anteil" is 'F>50%' THEN 703
+		WHEN "V_Anteil" is 'F>75%' THEN 704
+		WHEN "V_Anteil" is 'F>85%' THEN 705
+		WHEN "V_Anteil" is 'G<25%' THEN 801
+		WHEN "V_Anteil" is 'G>25%' THEN 802
+		WHEN "V_Anteil" is 'G>50%' THEN 803
+		WHEN "V_Anteil" is 'G>75%' THEN 804
+		WHEN "V_Anteil" is 'G>85%' THEN 805
+		ELSE -9999
+	END
